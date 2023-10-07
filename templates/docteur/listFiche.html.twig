@@ -1,0 +1,301 @@
+{% extends 'bord.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block profile %}
+	<div
+		class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+		<!-- Profile Sidebar -->
+		<div class="profile-sidebar">
+			<div class="widget-profile pro-widget-content">
+				<div class="profile-info-widget">
+					<a href="#" class="booking-doc-img">
+						<img src="{{asset ('assets1/img/patients/patient.jpg')}} " alt="User Image">
+					</a>
+					<div class="profile-det-info">
+						<h3>{{app.user.email}}</h3>
+						<div class="patient-details">
+
+							<i class="fas fa-map-marker-alt"></i>
+							{{app.user.adresse}}</h5>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		{% if 'ROLE_PATIENT' in app.user.roles %}
+
+
+			<div class="dashboard-widget">
+				<nav class="dashboard-menu">
+					<ul>
+						<li>
+							<a href="{{path('app_RendezVous')}}">
+								<i class="fas fa-columns"></i>
+								<span>Tableau de bord</span>
+							</a>
+						</li>
+
+
+						<li class="active">
+							<a href="{{path ('user_profile')}}">
+								<i class="fas fa-user-cog"></i>
+								<span>Paramètres de profil</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="doctor-change-password.html">
+								<i class="fas fa-lock"></i>
+								<span>Changer le mot de passe</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{path ('app_logout')}}">
+								<i class="fas fa-sign-out-alt"></i>
+								<span>Se déconnecter</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		{% elseif 'ROLE_DOCTOR' in app.user.roles %}
+			<div class="dashboard-widget">
+				<nav class="dashboard-menu">
+					<ul>
+						<li class="active">
+							<a href="{{path ('app_docteur_listFiche')}}">
+								<i class="fas fa-columns"></i>
+								<span>Fiches</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{path ('app_docteur_listRDV')}}">
+								<i class="fas fa-calendar-check"></i>
+								<span>Rendez-vous</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="Horaires.html">
+								<i class="fas fa-hourglass-start"></i>
+								<span>Calendrier des horaires</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="{{path ('user_profile')}}">
+								<i class="fas fa-user-cog"></i>
+								<span>Paramètres de profil</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="doctor-change-password.html">
+								<i class="fas fa-lock"></i>
+								<span>Changer le mot de passe</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{path ('app_logout')}}">
+								<i class="fas fa-sign-out-alt"></i>
+								<span>Se déconnecter</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		{% elseif 'ROLE_PARA' in app.user.roles %}
+			<div class="dashboard-widget">
+				<nav class="dashboard-menu">
+					<ul>
+						<li>
+							<a href="doctor-dashboard.html">
+								<i class="fas fa-columns"></i>
+								<span>Tableau de bord</span>
+							</a>
+						</li>
+
+
+						<li class="active">
+							<a href="{{path ('user_profile')}}">
+								<i class="fas fa-user-cog"></i>
+								<span>Paramètres de profil</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="doctor-change-password.html">
+								<i class="fas fa-lock"></i>
+								<span>Changer le mot de passe</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{path ('app_logout')}}">
+								<i class="fas fa-sign-out-alt"></i>
+								<span>Se déconnecter</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		{% endif %}
+	</div>
+	<!-- /Profile Sidebar -->
+
+</div>{% endblock %}{% block basic %}
+
+
+<div class="col-md-7 col-lg-8 col-xl-9">
+	<div class="card">
+		<div
+			class="card-body pt-0">
+
+			<!-- Tab Menu -->
+			<nav class="user-tabs mb-4">
+				<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+					<li class="nav-item">
+						<a class="nav-link active" href="#pat_appointments" data-toggle="tab">Fiches Médicales</a>
+					</li>
+
+				</ul>
+			</nav>
+			<!-- /Tab Menu -->
+
+			<!-- Tab Content -->
+			<div
+				class="tab-content pt-0">
+
+				<!-- Appointment Tab -->
+				<div id="pat_appointments" class="tab-pane fade active show">
+					<div class="card card-table mb-0">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover table-center mb-0">
+									<thead>
+										<tr>
+											<th>Patient</th>
+											<th>Age</th>
+											<th>bloodType</th>
+											<th>Action</th>
+
+
+										</tr>
+									</thead>
+									<tbody>
+										{% for Fich in Fiche %}
+											<tr>
+												<td>
+													<h2 class="table-avatar">
+
+														<a href="{{ path('app_docteur_Fiche', {'id': Fich.id}) }}">{{ Fich.patient.nom }}
+
+														</h2>
+													</td>
+												</td>
+												<td>{{ Fich.age}}</td>
+												<td>{{ Fich.bloodType}}</td>
+												<td>
+													<a class="btn btn-primary" href="#">Print To PDF</a>
+												</td>
+
+
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Appointment Tab -->
+
+
+			</div>
+			<!-- Tab Content -->
+
+		</div>
+
+
+	</div>
+</div></div>{% endblock %}{%block Sidebar%}<!-- Sidebar --><div class="sidebar" id="sidebar"><div class="sidebar-inner slimscroll">
+<div id="sidebar-menu" class="sidebar-menu">
+	<ul>
+		<li class="menu-title">
+			<span>Main</span>
+		</li>
+		<li>
+			<a href="index.html">
+				<i class="fe fe-home"></i>
+				<span>Tableau de bord</span>
+			</a>
+		</li>
+		<li>
+			<a href="{{ path('app_docteur_listRDV') }}">
+				<i class="fe fe-layout"></i>
+				<span>Rendez-vous</span>
+			</a>
+		</li>
+		<li class="active">
+			<a href="{{ path('app_docteur_listFiche') }}">
+				<i class="fe fe-users"></i>
+				<span>Fiche Médicale</span>
+			</a>
+		</li>
+		<li>
+			<a href="doctor-list.html">
+				<i class="fe fe-user-plus"></i>
+				<span>Doctors</span>
+			</a>
+		</li>
+		<li>
+			<a href="patient-list.html">
+				<i class="fe fe-user"></i>
+				<span>Patients</span>
+			</a>
+		</li>
+		<li>
+			<a href="para-list.html">
+				<i class="fe fe-user"></i>
+				<span>parapharmacie
+				</span>
+			</a>
+		</li>
+		<li>
+			<a href="Forum.html">
+				<i class="fe fe-star-o"></i>
+				<span>Forum</span>
+			</a>
+		</li>
+		<li>
+			<a href="reclamation.html">
+				<i class="fe fe-file"></i>
+				<span>Reclamation</span>
+			</a>
+		</li>
+
+		<li>
+			<a href="profile.html">
+				<i class="fe fe-user-plus"></i>
+				<span>Profile</span>
+			</a>
+		</li>
+
+	</ul>
+</div></div></div><!-- /Sidebar -->{%endblock%}{% block breadcrumb %}<!-- Breadcrumb --><div class="breadcrumb-bar">
+<div class="container-fluid">
+	<div class="row align-items-center">
+		<div class="col-md-12 col-12">
+			<nav aria-label="breadcrumb" class="page-breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index-2.html">Home</a>
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">Appointments</li>
+				</ol>
+			</nav>
+			<h2 class="breadcrumb-title">Appointments</h2>
+		</div>
+	</div>
+</div></div>{% endblock %}

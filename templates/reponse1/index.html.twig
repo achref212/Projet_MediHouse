@@ -1,0 +1,130 @@
+{% extends 'Admin.html.twig' %}
+
+{% block title %}Reponse index
+{% endblock %}
+{% block Sidebar %}
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li>
+						<a href="{{path ('app_Admin_index')}}">
+							<i class="fe fe-home"></i>
+							<span>Tableau de bord</span>
+						</a>
+					</li>
+					<li>
+						<a href="rendez-vous.html">
+							<i class="fe fe-layout"></i>
+							<span>Rendez-vous</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('user_doctors')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Doctors</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_patients')}}">
+							<i class="fe fe-user"></i>
+							<span>Patients</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_paras')}}">
+							<i class="fe fe-user"></i>
+							<span>parapharmacie
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="Forum.html">
+							<i class="fe fe-star-o"></i>
+							<span>Forum</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="{{path ('afficheR')}}">
+							<i class="fe fe-file"></i>
+							<span>Reclamation</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('admin_profile')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Profile</span>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+{% endblock %}
+{% block pageheader %}
+	<div class="page-header">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="page-title">Reponse</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index.html">Dashboard</a>
+					</li>
+					<li class="breadcrumb-item">
+						<a href="/afficheREC">Liste des Réclamation</a>
+					</li>
+					<li class="breadcrumb-item">
+						<a href="/afficheREC">View</a>
+					</li>
+					<li class="breadcrumb-item">
+						<a href="">Reponse</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block body %}
+	<br>
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+			<h1>Reponse index</h1>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+
+						<th>ReponseDes</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for Reponse1 in Reponse1s %}
+						<tr>
+							<td>{{ Reponse1.id }}</td>
+
+							<td>{{ Reponse1.Reponse1Des }}</td>
+							<td>
+								<a href="{{ path('app_Reponse1_show', {'id': Reponse1.id}) }}">show</a>
+								<a href="{{ path('app_Reponse1_edit', {'id': Reponse1.id}) }}">edit</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<a href="{{ path('afficheR') }}">back to list</a>
+
+		{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}
+	Reclamation
+{% endblock %}
+
+{% block body %}
+
+	<div class="breadcrumb-bar">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+
+				<div class="col-md-12 col-12">
+					<nav aria-label="breadcrumb" class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{path ('app_patient_index')}}">Home</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_addReclamation') }}">Réclamation</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">Liste des Réclamation
+							</li>
+						</ol>
+					</nav>
+					<h2 class="breadcrumb-title">Liste des Réclamation
+					</h2>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="table-responsive">
+								<div
+									id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+									<!-- Invoice Table -->
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>Sujet</th>
+													<th>description</th>
+													<!--	<th>Etat</th>-->
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													{% for reclamation in reclamation %}
+														<td>
+															<a>{{reclamation.id}}</a>
+														</td>
+														<td>{{ reclamation.sujet }}</td>
+														<td>{{reclamation.descreption}}</td>
+														<!--	<td><span class="badge badge-pill bg-danger-light">non-traité</span></td>-->
+														<td class="text-right">
+															<div class="table-action">
+																<a href="{{ path('affR', {'id': reclamation.id}) }}" class="btn btn-sm bg-info-light">
+																	<i class="far fa-eye"></i>
+																	View
+																</a>
+																<!--<a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+																																																																																																																<i class="fas fa-print"></i> Imprimer
+																																																																																																															</a>-->
+																<a href="{{ path('updateR', {'id': reclamation.id}) }}" class="btn btn-sm bg-primary-light">
+																	<i class="fas fa-file"></i>
+																	modifier
+																</a>
+															</div>
+														</td>
+													</tr>
+												{% else %}
+													<tr>
+														<td colspan="8">no records found</td>
+
+													</tr>
+
+												</tbody>
+											{% endfor %}
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Invoice Table -->
+	{% endblock %}

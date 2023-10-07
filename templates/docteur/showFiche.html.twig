@@ -1,0 +1,218 @@
+{% extends 'bord.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block basic %}
+	<div class="col-md-7 col-lg-8 col-xl-9">
+		<div class="card">
+			<div class="content" style="transform: none; min-height: 68.7px;">
+				<div class="container-fluid" style="transform: none;">
+
+					<div class="row" style="transform: none;">
+						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar dct-dashbd-lft" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+
+							<div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; top: 0px; left: 30px;">
+								<div class="card widget-profile pat-widget-profile">
+
+									<div class="card flex-fill" style="display:flex; align-items:center; justify-content:center;">
+										<div class="avatar avatar-xl">
+											<img class="avatar-img rounded-circle" alt="User Image" src="{{asset('assets/img/profiles/avatar-02.jpg')}}">
+										</div>
+
+										<div class="card-header">
+											<h5 class="card-title mb-0">{{Fiche.patient.nom}}</h5>
+										</div>
+										<div class="card-body">
+											<p class="card-text">ID:
+												{{Fiche.id}}</p>
+											<p class="card-text">Age:
+												{{Fiche.Age}}</p>
+											<p class="card-text">Groupe Sanguin:
+												{{Fiche.bloodType}}</p>
+											<a class="btn btn-primary" href="{{ path('app_PDFF', {'id': Fiche.id}) }}">Print To PDF</a>
+										</div>
+									</div>
+								</div>
+								<div class="resize-sensor" style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+									<div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+										<div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 408px; height: 1002px;"></div>
+									</div>
+									<div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+										<div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-7 col-lg-8 col-xl-9 dct-appoinment">
+							<div class="card">
+								<div class="card-body pt-0">
+									<div class="user-tabs">
+										<ul class="nav nav-tabs nav-tabs-bottom nav-justified flex-wrap">
+											<li class="nav-item">
+												<a class="nav-link active" href="#pat_appointments" data-toggle="tab">Appointments</a>
+											</li>
+
+
+										</ul>
+									</div>
+									<div
+										class="tab-content">
+
+										<!-- Appointment Tab -->
+										<div id="pat_appointments" class="tab-pane fade active show">
+											<div class="card card-table mb-0">
+												<div class="card-body">
+													<div class="table-responsive">
+														<table class="table table-hover table-center mb-0">
+															<thead>
+																<tr>
+
+																	<th>Appt Date</th>
+																	<th>Status</th>
+																	<th>Local</th>
+
+																</tr>
+															</thead>
+															<tbody>
+																{% for RendezVous in rendezVous %}
+																	<tr>
+
+
+																		<td>{{ RendezVous.date|date('Y-m-d H:i:s') }}</td>
+																		{% if RendezVous.statut=='Pending' %}
+																			<td>
+																				<span class="badge badge-pill bg-warning-light">{{ RendezVous.statut}}</span>
+																			{% endif %}
+																			{% if RendezVous.statut=='Confirmé' %}
+																				<td>
+																					<span class="badge badge-pill bg-success-light">{{ RendezVous.statut}}</span>
+
+																				{% endif %}
+																				{% if RendezVous.statut=='Annulé' %}
+																					<td>
+																						<span class="badge badge-pill bg-danger-light">{{ RendezVous.statut}}</span>
+																					{% endif %}
+																				</td>
+																				<td>{{ RendezVous.Local}}</td>
+																			</tr>
+
+																		{% endfor %}
+																	</tr>
+																</tbody>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /Appointment Tab -->
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block breadcrumb %}
+	<!-- Breadcrumb -->
+	<div class="breadcrumb-bar">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-md-12 col-12">
+					<nav aria-label="breadcrumb" class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="index-2.html">Home</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">Appointments</li>
+						</ol>
+					</nav>
+					<h2 class="breadcrumb-title">Appointments</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{%block Sidebar%}
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+	<div class="sidebar-inner slimscroll">
+		<div id="sidebar-menu" class="sidebar-menu">
+			<ul>
+				<li class="menu-title">
+					<span>Main</span>
+				</li>
+				<li>
+					<a href="index.html">
+						<i class="fe fe-home"></i>
+						<span>Tableau de bord</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('app_docteur_listRDV') }}">
+						<i class="fe fe-layout"></i>
+						<span>Rendez-vous</span>
+					</a>
+				</li>
+				<li class="active">
+					<a href="{{ path('app_docteur_listFiche') }}">
+						<i class="fe fe-users"></i>
+						<span>Fiche Médicale</span>
+					</a>
+				</li>
+				<li>
+					<a href="doctor-list.html">
+						<i class="fe fe-user-plus"></i>
+						<span>Doctors</span>
+					</a>
+				</li>
+				<li>
+					<a href="patient-list.html">
+						<i class="fe fe-user"></i>
+						<span>Patients</span>
+					</a>
+				</li>
+				<li>
+					<a href="para-list.html">
+						<i class="fe fe-user"></i>
+						<span>parapharmacie
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="Forum.html">
+						<i class="fe fe-star-o"></i>
+						<span>Forum</span>
+					</a>
+				</li>
+				<li>
+					<a href="reclamation.html">
+						<i class="fe fe-file"></i>
+						<span>Reclamation</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="profile.html">
+						<i class="fe fe-user-plus"></i>
+						<span>Profile</span>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- /Sidebar -->
+{%endblock%}

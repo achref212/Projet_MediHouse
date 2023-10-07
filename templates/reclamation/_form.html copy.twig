@@ -1,0 +1,33 @@
+{{ form_start(formClass,{'attr': {'novalidate':'novalidate'}}) }}
+    {{ form_errors(formClass) }}
+    <p>
+
+    </p>
+    <label class="focus-label">Votre Email</label><br>
+    {{ form_widget(formClass.email) }}<p>
+    {{ form_errors(formClass.email) }}
+    </p>
+    <label class="focus-label">sujet</label><br>
+    {{ form_widget(formClass.sujet) }}<p>
+    {{ form_errors(formClass.sujet) }}
+    </p>
+    <label class="focus-label">Votre Réclamation</label>
+    <div id="addDescDiv">
+    {{ form_widget(formClass.descreption) }}<p>
+    {{ form_errors(formClass.descreption) }}
+
+</div>
+    </p>
+    </p>
+    <label class="focus-label">date</label><br>
+    {{ form_widget(formClass.date_reclamation) }}<p>
+
+    </p>
+    </p>
+    
+    <div class="submit-section proceed-btn " data-toggle="modal">
+    <button class="btn btn-primary submit-btn">
+    {{ button_label|default('Ajouter') }}</button>
+    </div>
+    <br>
+{{ form_end(formClass) }}

@@ -1,0 +1,131 @@
+{% extends 'log1.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	<div class="main-wrapper login-body">
+		<div class="login-wrapper">
+			<div class="container">
+				<div class="loginbox">
+					<div class="login-left">
+						<img class="img-fluid" src="{{asset ('assets/img/footer-logo1.png')}} " alt="Logo">
+					</div>
+					<div class="login-right">
+						<div class="login-right-wrap">
+							<h1>Register</h1>
+							<p class="account-subtitle">Access to our dashboard</p>
+
+							<!-- Form -->
+							{{ form_start(registrationForm,{'attr': {'novalidate':'novalidate'}}) }}
+							<!-- Register Form -->
+							<div class="form-group">
+								<label class="col-lg-3 col-form-label">{{ form_label(registrationForm.email,"email")  }}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+									{{ form_errors(registrationForm.email) }}
+								</div>
+							</div>
+
+
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label">{{ form_label(registrationForm.imgFile,"profilepicture") }}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.imgFile, {'attr': {'class': 'form-control-file'}}) }}
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-3 col-form-label">{{ form_label(registrationForm.nom,"nom")  }}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control'}}) }}
+
+									{{ form_errors(registrationForm.nom) }}
+								</div>
+							</div>
+							<div class="form-group">
+
+								<label class="col-lg-3 col-form-label" for="{{ registrationForm.genre.vars.id }}">{{ registrationForm.genre.vars.label}}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.genre) }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 col-form-label">{{ form_label(registrationForm.prenom,"prenom")  }}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control'}}) }}
+									{{ form_errors(registrationForm.prenom, ) }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 col-form-label">{{ form_label(registrationForm.telephone,"telephone")  }}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.telephone, {'attr': {'class': 'form-control'}}) }}
+									{{ form_errors(registrationForm.telephone) }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 col-form-label">{{ form_label(registrationForm.adresse,"adresse")  }}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.adresse, {'attr': {'class': 'form-control'}}) }}
+									{{ form_errors(registrationForm.adresse) }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 col-form-label">{{ form_label(registrationForm.password.first, 'Password') }}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.password.first, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 col-form-label">{{ form_label(registrationForm.password.second, 'Repeat') }}</label>
+								<div class="col-lg-9">
+									{{ form_widget(registrationForm.password.second, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+
+							<div class="form-group form-focus">
+
+								<label class="focus-label"></label>
+								{{ form_row(registrationForm.agreeTerms) }}
+							</div>
+							<button class="btn btn-primary w-100" type="submit">Create Account</button>
+							<div class="col-12">
+								<p class="small mb-0">Already have an account?
+									<a href="{{path ('app_login_Admin')}}">Log in</a>
+								</p>
+							</div>
+
+							{{ form_end(registrationForm) }}
+
+							<!-- /Form -->
+
+							<div class="login-or">
+								<span class="or-line"></span>
+								<span class="span-or">or</span>
+							</div>
+
+							<!-- Social Login -->
+							<div class="social-login">
+								<span>Register with</span>
+								<a href="#" class="facebook">
+									<i class="fa fa-facebook"></i>
+								</a>
+								<a href="#" class="google">
+									<i class="fa fa-google"></i>
+								</a>
+							</div>
+							<!-- /Social Login -->
+
+							<div class="text-center dont-have">Already have an account?
+								<a href="login.html">Login</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

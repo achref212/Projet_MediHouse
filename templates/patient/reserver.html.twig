@@ -1,0 +1,89 @@
+{% extends 'base1.html.twig' %}
+{% block title %}{% endblock %}
+{%block body%}
+
+<div class="content" style="min-height: 307.4px;">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-12">
+
+				<div class="card">
+					<div class="card-body">
+						<div class="booking-doc-info">
+							<a href="doctor-profile.html" class="booking-doc-img">
+								<img src="{{asset('assets/img/doctors/doctor-thumb-02.jpg')}}" alt="User Image">
+							</a>
+							<div class="booking-info">
+								<h4>
+									<a href="doctor-profile.html">{{rendezvous.docteur.nom}}</a>
+								</h4>
+								<div class="rating">
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star"></i>
+									<span class="d-inline-block average-rating">35</span>
+								</div>
+								<p class="text-muted mb-0">
+									<i class="fas fa-map-marker-alt"></i>
+									{{app.user.adresse}}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-6 d-flex">
+					<div class="card flex-fill">
+						<div class="card-header">
+							<h4 class="card-title">Choisisser la date du rendez Vous</h4>
+						</div>
+						<div class="card-body">
+							{{ form_start(form,{'attr': {'novalidate':'novalidate'} })}}
+							<form action="#">
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label">{{ form_label(form.date)  }}</label>
+									<div class="col-lg-9">
+										{{ form_widget(form.date, {'attr': {'class':'form-control'} }) }}
+										{{ form_errors(form.date) }}
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label">{{ form_label(form.time)  }}</label>
+									<div class="col-lg-9">
+										{{ form_widget(form.time, {'attr': {'class':'form-control time'} }) }}
+										{{ form_errors(form.time) }}
+									</div>
+								</div>
+
+
+								{{ form_widget(form.Confirmer, {'attr': {'class':'form-control'} })}}
+							</div>
+							{{ form_end(form) }}
+						</form>
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div></div>{%endblock%}{%block breadcrumb%}<div class="breadcrumb-bar">
+<div class="container-fluid">
+	<div class="row align-items-center">
+		<div class="col-md-12 col-12">
+			<nav aria-label="breadcrumb" class="page-breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index-2.html">Home</a>
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">Booking</li>
+				</ol>
+			</nav>
+			<h2 class="breadcrumb-title">Booking</h2>
+		</div>
+	</div>
+</div></div>{%endblock%}

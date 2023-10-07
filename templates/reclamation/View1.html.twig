@@ -1,0 +1,188 @@
+{% extends 'Admin.html.twig' %}
+
+{% block title %}Edit Reclamation
+{% endblock %}
+{% block Sidebar %}
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li>
+						<a href="{{path ('app_Admin_index')}}">
+							<i class="fe fe-home"></i>
+							<span>Tableau de bord</span>
+						</a>
+					</li>
+					<li>
+						<a href="rendez-vous.html">
+							<i class="fe fe-layout"></i>
+							<span>Rendez-vous</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('user_doctors')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Doctors</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_patients')}}">
+							<i class="fe fe-user"></i>
+							<span>Patients</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_paras')}}">
+							<i class="fe fe-user"></i>
+							<span>parapharmacie
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="Forum.html">
+							<i class="fe fe-star-o"></i>
+							<span>Forum</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="{{path ('afficheR')}}">
+							<i class="fe fe-file"></i>
+							<span>Reclamation</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('admin_profile')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Profile</span>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+{% endblock %}
+
+{% block pageheader %}
+	<div class="page-header">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="page-title">Liste des Reclamations</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index.html">Tableau de bord</a>
+					</li>
+
+					<li class="breadcrumb-item active">
+						<a href="{{path ('afficheR')}}">Reclamation</a>
+					</li>
+					<li class="breadcrumb-item active">
+						<a href="{{path ('afficheR')}}">View</a>
+					</li>
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+{% block body %}
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+
+			<!-- Page Header -->
+
+			<!-- /Page Header -->
+				<div class="content"> <div class="container-fluid">
+
+					<div class="row">
+						<div class="col-lg-8 offset-lg-2">
+							<div class="invoice-content">
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="invoice-logo">
+												<img src="{{asset('assets/img/logo2.png')}}" alt="logo">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<p class="invoice-details">
+												<strong>N°</strong>
+												{{ reclamation.id }}
+												<br>
+												<strong>Date:</strong>
+												{{ reclamation.dateReclamation ? reclamation.dateReclamation|date('Y-m-d') : '' }}
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<!-- Invoice Item -->
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="invoice-info">
+												<strong class="customer-text">Sujet</strong>
+												<p class="invoice-content ">
+													{{ reclamation.sujet }}
+													<br>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /Invoice Item -->
+
+								<!-- Invoice Item -->
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="invoice-info">
+												<strong class="customer-text">Description</strong>
+												<p class="invoice-content">
+													{{ reclamation.descreption }}
+													<br>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="customer-text">
+									<h4>Reponse</h4>
+									<p class="text-muted mb-0">{{Reponse1.Reponse1Des}}</p>
+								</div>
+								<!-- /Invoice Item -->
+
+								<!-- Invoice Information -->
+
+								<!--<div class="other-info">
+																																																																			<h4>Votre reponse</h4>
+																																																																			<p class="text-muted mb-0">{reponse.reponseDes}}</p>
+																																																																		</div>--><p>
+
+							</p>
+
+								<!--<div class="submit-section proceed-btn " data-toggle="modal" href="{{ path('app_reponse_new', {'id': reclamation.id}) }}">
+																																																																			<button class="btn btn-primary submit-btn">repondre</button>
+																																																																		</div>-->
+
+								<!-- /Invoice Information -->
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- /Page Content -->
+		</div>
+	</div>
+</div>{% endblock %}

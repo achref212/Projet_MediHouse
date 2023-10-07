@@ -1,0 +1,215 @@
+{% extends 'profile.html.twig' %}
+
+{% block title %}Calendrier
+{% endblock %}
+{% block stylesheets %}
+	<style>
+		#calendrier {
+			width: 70%;
+			margin: auto;
+		}
+	</style>
+{% endblock %}
+{% block body %}
+	<div class="content">
+		<div class="container-fluid">
+
+			<div class="row">
+				{% block profile %}
+					<div
+						class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+						<!-- Profile Sidebar -->
+						<div class="profile-sidebar">
+							<div class="widget-profile pro-widget-content">
+								<div class="profile-info-widget">
+									<a href="#" class="booking-doc-img">
+										<img src={{ vich_uploader_asset(app.user, 'imgFile') }} alt="User Image">
+									</a>
+									<div class="profile-det-info">
+										<h3>{{app.user.email}}</h3>
+										<div class="patient-details">
+
+											<i class="fas fa-map-marker-alt"></i>
+											{{app.user.adresse}}</h5>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						{% if 'ROLE_PATIENT' in app.user.roles %}
+
+
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="{{path('app_RendezVous')}}">
+												<i class="fas fa-columns"></i>
+												<span>Tableau de bord</span>
+											</a>
+										</li>
+
+
+										<li class="active">
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% elseif 'ROLE_DOCTOR' in app.user.roles %}
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="{{path ('app_docteur_listFiche')}}">
+												<i class="fas fa-columns"></i>
+												<span>Tableau de bord</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_docteur_listRDV')}}">
+												<i class="fas fa-calendar-check"></i>
+												<span>Rendez-vous</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="{{path ('app_calend')}}">
+												<i class="fas fa-hourglass-start"></i>
+												<span>Calendrier des horaires</span>
+											</a>
+										</li>
+
+										<li class="active">
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% elseif 'ROLE_PARA' in app.user.roles %}
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="doctor-dashboard.html">
+												<i class="fas fa-columns"></i>
+												<span>Tableau de bord</span>
+											</a>
+										</li>
+
+
+										<li class="active">
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% endif %}
+					</div>
+
+					<!-- /Profile Sidebar -->
+
+				</div>
+			{% endblock %}
+
+			<div class="card-body">
+				<div id="calendrier"></div>
+			</div>
+
+		</div>
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'dayGridMonth',
+locale: 'fr',
+timeZone: 'Europe/Paris',
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+events: {{ data|raw }},
+editable: true,
+eventResizableFromStart: true
+})
+
+calendar.on('eventChange', (e) => {
+let url = `/api/${
+e.event.id
+}/edit`
+let donnees = {
+"title": e.event.title,
+"description": e.event.extendedProps.description,
+"start": e.event.start,
+"end": e.event.end,
+"backgroundColor": e.event.backgroundColor,
+"borderColor": e.event.borderColor,
+"textColor": e.event.textColor,
+"allDay": e.event.allDay
+}
+
+let xhr = new XMLHttpRequest
+
+xhr.open("PUT", url)
+xhr.send(JSON.stringify(donnees))
+})
+
+calendar.render()
+}
+	</script>
+{% endblock %}

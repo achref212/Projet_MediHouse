@@ -1,0 +1,50 @@
+{% extends 'base1.html.twig' %}
+
+
+{% block body %}
+
+	<div class="doc-review review-listing">
+		{% for i in id %}
+			<!-- Review Listing -->
+			<ul
+				class="comments-list">
+
+				<!-- Comment List -->
+				<li>
+					<a href="{{ path('app_question_edit', {'id': i.id}) }}" style="float: right;">
+						<button>edit</button>
+					</a>
+					<form method="post" action="{{ path('app_question_delete', {'id': i.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ i.id) }}">
+						<button style="float: right;">Delete</button>
+					</form>
+					<div class="comment">
+						<img class="avatar rounded-circle" alt="User Image" src="{{asset('assets/img/patients/patient.jpg')}}">
+						<div class="comment-body">
+							<div class="meta-data">
+								<span class="comment-author">{{app.user.email}}</span>
+								<span class="comment-date">publié le
+									{{i.getdatepub()|date('d M Y') }}</span>
+
+							</div>
+							<p class="comment-content">
+								<td>{{i.question}}</td>
+
+							</p>
+
+						</div>
+					</div>
+
+
+				</li>
+			{% else %}
+				<tr>
+					<td colspan="5">pas de question</td>
+				</tr>
+
+
+				<tr></tr>
+			{%endfor %}
+		</table>
+
+	{% endblock %}

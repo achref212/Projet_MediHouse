@@ -1,0 +1,125 @@
+{% extends 'base1.html.twig' %}
+
+{% block body %}
+	<!-- Breadcrumb -->
+
+	<div class="breadcrumb-bar">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-md-12 col-12">
+					<nav aria-label="breadcrumb" class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{path ('app_patient_index')}}">Home</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_addReclamation') }}">Réclamation</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="{{ path('afficheRl') }}">Liste des Réclamation</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">
+								View</li>
+						</ol>
+					</nav>
+					<h2 class="breadcrumb-title">Réclamation View</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Breadcrumb -->
+
+	<!-- Page Content -->
+	<div class="content">
+		<div class="container-fluid">
+
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<div class="invoice-content">
+						<div class="invoice-item">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="invoice-logo">
+										<img src="{{asset('assets/img/logo2.png')}}" alt="logo">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<p class="invoice-details">
+										<strong>N°</strong>
+										{{ reclamation.id }}
+										<br>
+
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Invoice Item -->
+						<div class="invoice-item">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="invoice-info">
+										<strong class="customer-text">Sujet</strong>
+										<p class="invoice-details invoice-details-two">
+											{{ reclamation.sujet }}
+											<br>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Invoice Item -->
+
+						<!-- Invoice Item -->
+						<div class="invoice-item">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="invoice-info">
+										<strong class="customer-text">Description</strong>
+										<p class="invoice-details invoice-details-two">
+											{{ reclamation.descreption }}
+											<br>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Invoice Item -->
+
+
+						<!-- Invoice Information -->
+
+
+						<div class="invoice-item">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="invoice-info">
+										<strong class="customer-text">Reponse</strong>
+										<p class="invoice-details invoice-details-two">
+											{{Reponse1.reponse1Des}}
+											<br>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div>
+							<a href="{{ path('app_PDF', {'id': reclamation.id}) }}" class="btn btn-sm bg-primary-light">
+								<i class="fas fa-file"></i>
+								Enregistrer PDF
+							</a>
+						</div>
+
+
+						<!-- /Invoice Information -->
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+{% endblock %}

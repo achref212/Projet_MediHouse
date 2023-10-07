@@ -1,0 +1,136 @@
+{% extends 'Admin.html.twig' %}
+
+{% block title %}Reponse index
+{% endblock %}
+{% block Sidebar %}
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li>
+						<a href="{{path ('app_Admin_index')}}">
+							<i class="fe fe-home"></i>
+							<span>Tableau de bord</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('app_listRDV')}}">
+							<i class="fe fe-layout"></i>
+							<span>Rendez-vous</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('user_doctors')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Doctors</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_patients')}}">
+							<i class="fe fe-user"></i>
+							<span>Patients</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_paras')}}">
+							<i class="fe fe-user"></i>
+							<span>parapharmacie
+							</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="{{path ('app_reponse_index')}}">
+							<i class="fe fe-star-o"></i>
+							<span>Forum</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('afficheR')}}">
+							<i class="fe fe-file"></i>
+							<span>Reclamation</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('admin_profile')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Profile</span>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+
+{% endblock %}
+{% block pageheader %}
+	<div class="page-header">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="page-title">Liste des Reponse</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index.html">Tableau de bord</a>
+					</li>
+
+					<li class="breadcrumb-item active">reponse</li>
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+{% block body %}
+	<h1>Repense
+	</h1>
+<a href="{{ path('stat_forum')}}">
+								<button class="btn btn-primary">statistique</button>
+							</a>
+	<table class="table">
+		<thead>
+			<tr>
+
+				<th>Id</th>
+
+				<th>Question</th>
+				<th>Date_pub</th>
+				<th>categorie</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+		<tbody>
+			{% for question in questions %}
+				<tr>
+					<td>{{ question.id }}</td>
+
+					<td>{{ question.question }}</td>
+					<td>{{ question.datePub ? question.datePub|date('Y-m-d') : '' }}</td>
+					<td>{{ question.categorie }}</td>
+
+					<td>
+						<div class="button-group">
+							<a href="{{ path('app_question_show', {'id': question.id}) }}">
+								<button class="btn btn-primary">detail</button>
+							</a>
+							<form method="post" action="{{ path('delete', {'id': question.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ question.id) }}">
+								<button class="btn btn-danger delete">supprimer</button>
+							</form>
+						</div>
+					</td>
+				</tr>
+
+			{% endfor %}
+		</tbody>
+
+	</tbody>
+</table>{% endblock %}

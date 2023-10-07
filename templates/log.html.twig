@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html
+	lang="en">
+
+	<!-- doccure/login.html  30 Nov 2019 04:12:20 GMT -->
+	{% block head %}
+		<head>
+			<meta charset="utf-8">
+			<title>
+				{% block title %}MEDIHOUSE-LOGIN
+				{% endblock %}
+			</title>
+			<meta
+			name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+			<!-- Favicons -->
+			<link href="{{asset ('assets1/img/favicon1.png')}}" rel="icon">
+			{% block CSS %}
+				<!-- Bootstrap CSS -->
+				<link
+				rel="stylesheet" href="{{asset ('assets1/css/bootstrap.min.css')}} ">
+
+				<!-- Fontawesome CSS -->
+				<link rel="stylesheet" href="{{asset ('assets1/plugins/fontawesome/css/fontawesome.min.css')}}">
+				<link
+				rel="stylesheet" href="{{asset ('assets1/plugins/fontawesome/css/all.min.css')}}">
+
+				<!-- Main CSS -->
+				<link rel="stylesheet" href="{{asset ('assets1/css/style.css')}}">
+			{% endblock %}
+			<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+			<!--[if lt IE 9]>
+																																																																																																																																																																<script src="assets1/js/html5shiv.min.js"></script>
+																																																																																																																																																																<script src="assets1/js/respond.min.js"></script>
+																																																																																																																																																															<![endif]-->
+
+		</head>
+	{% endblock %}
+
+	<body
+		class="account-page">
+
+		<!-- Main Wrapper -->
+		<div
+			class="main-wrapper">
+
+			<!-- Header -->
+			<header class="header">
+
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="index-2.html" class="navbar-brand logo">
+							<img src="{{asset ('assets1/img/logo2.png')}}" class="img-fluid" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="index-2.html" class="menu-logo">
+								<img src="{{asset ('assets1/img/logo.png')}}" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav"></ul>
+					</div>
+					<ul class="nav header-navbar-rht">
+
+						<li class="nav-item">
+							<a class="nav-link header-login" href="login.html">Se Connecter /S'inscrire
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+			</header>
+			<!-- /Header -->
+
+			<!-- Page Content -->
+			{% block body %}
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-8 offset-md-2"></div>
+						</div>
+					</div>
+				</div>
+
+			{% endblock %}
+
+
+			<!-- /Page Content -->
+
+
+			<!-- Footer -->
+
+			{% block footer %}
+				<footer
+					class="footer">
+					<!-- Footer Top -->
+					<div class="footer-top">
+						<div class="container-fluid">
+							<div class="row">
+								<div
+									class="col-lg-3 col-md-6">
+
+									<!-- Footer Widget -->
+									<div class="footer-widget footer-about">
+										<div class="footer-logo">
+											<img src="{{asset ('assets1/img/footer-logo1.png') }}" alt="logo">
+										</div>
+										<div class="footer-about-content">
+											<div class="social-icon">
+												<ul>
+													<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+													<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+													<li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+													<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+													<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- /Footer Widget -->
+
+								</div>
+
+								<div class="col-lg-3 col-md-6"><!-- Footer Widget -->
+									<!--<div class="footer-widget footer-menu">
+																																																																																																																																																		<h2 class="footer-title">For Patients</h2>
+																																																																																																																																																		<ul>
+																																																																																																																																																			<li><a href="search.html"><i class="fas fa-angle-double-right"></i> Search for
+																																																																																																																																																					Doctors</a></li>
+																																																																																																																																																			<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+																																																																																																																																																			<li><a href="register.html"><i class="fas fa-angle-double-right"></i> Register</a>
+																																																																																																																																																			</li>
+																																																																																																																																																			<li><a href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a>
+																																																																																																																																																			</li>
+																																																																																																																																																			<li><a href="patient-dashboard.html"><i class="fas fa-angle-double-right"></i>
+																																																																																																																																																					Patient Dashboard</a></li>
+																																																																																																																																																		</ul>
+																																																																																																																																																	</div>
+																																																																																																																																																	<!-- /Footer Widget -->
+
+								</div>
+
+								<div class="col-lg-3 col-md-6"><!-- Footer Widget -->
+									<!--<div class="footer-widget footer-menu">
+																																																																																																																																																		<h2 class="footer-title">For Doctors</h2>
+																																																																																																																																																		<ul>
+																																																																																																																																																			<li><a href="appointments.html"><i class="fas fa-angle-double-right"></i>
+																																																																																																																																																					Appointments</a></li>
+																																																																																																																																																			<li><a href="chat.html"><i class="fas fa-angle-double-right"></i> Chat</a></li>
+																																																																																																																																																			<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+																																																																																																																																																			<li><a href="doctor-register.html"><i class="fas fa-angle-double-right"></i>
+																																																																																																																																																					Register</a></li>
+																																																																																																																																																			<li><a href="doctor-dashboard.html"><i class="fas fa-angle-double-right"></i> Doctor
+																																																																																																																																																					Dashboard</a></li>
+																																																																																																																																																		</ul>
+																																																																																																																																																	</div>
+																																																																																																																																																	<!-- /Footer Widget -->
+
+								</div>
+
+								<div
+									class="col-lg-3 col-md-6">
+
+									<!-- Footer Widget -->
+									<div class="footer-widget footer-contact">
+										<h2 class="footer-title">Contact Us</h2>
+										<div class="footer-contact-info">
+											<div class="footer-address">
+												<span>
+													<i class="fas fa-map-marker-alt"></i>
+												</span>
+												<p>
+													esprit ghazala tunisie</p>
+											</div>
+											<p>
+												<i class="fas fa-phone-alt"></i>
+												+216 55 676 837
+											</p>
+											<p class="mb-0">
+												<i class="fas fa-envelope"></i>
+												contact@medihouse.com
+											</p>
+										</div>
+									</div>
+									<!-- /Footer Widget -->
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<!-- /Footer Top -->
+
+				<!-- Footer Bottom -->
+
+					<!-- /Footer Bottom -->
+
+				</footer>
+			{% endblock %}
+			<!-- /Footer -->
+
+		</div>
+		<!-- /Main Wrapper -->
+		{% block js %}
+			<!-- jQuery -->
+			<script src="{{asset ('assets1/js/jquery.min.js')}} "></script>
+
+			<!-- Bootstrap Core JS -->
+			<script src="{{asset ('assets1/js/popper.min.js')}} "></script>
+			<script src="{{asset ('assets1/js/bootstrap.min.js')}} "></script>
+
+			<!-- Custom JS -->
+			<script src="{{asset ('assets1/js/script.js')}} "></script>
+		{% endblock %}
+	</body>
+
+	<!-- doccure/login.html  30 Nov 2019 04:12:20 GMT -->
+</html>

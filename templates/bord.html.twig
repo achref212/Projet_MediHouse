@@ -1,0 +1,329 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Patient
+{% endblock %}
+
+{% block body %}
+
+	<div class="content">
+		<div class="container-fluid">
+
+			<div class="row">
+				{% block profile %}
+					<div
+						class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+						<!-- Profile Sidebar -->
+						<div class="profile-sidebar">
+							<div class="widget-profile pro-widget-content">
+								<div class="profile-info-widget">
+									<a href="#" class="booking-doc-img">
+										<img src="{{asset ('assets1/img/patients/patient.jpg')}} " alt="User Image">
+									</a>
+									<div class="profile-det-info">
+										<h3>{{app.user.email}}</h3>
+										<div class="patient-details">
+
+											<i class="fas fa-map-marker-alt"></i>
+											{{app.user.adresse}}</h5>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						{% if 'ROLE_PATIENT' in app.user.roles %}
+
+
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="{{path('app_RendezVous')}}">
+												<i class="fas fa-columns"></i>
+												<span>Tableau de bord</span>
+											</a>
+										</li>
+
+
+										<li class="active">
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% elseif 'ROLE_DOCTOR' in app.user.roles %}
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="{{path ('app_docteur_listFiche')}}">
+												<i class="fas fa-columns"></i>
+												<span>Fiches</span>
+											</a>
+										</li>
+										<li class="active">
+											<a href="{{path ('app_docteur_listRDV')}}">
+												<i class="fas fa-calendar-check"></i>
+												<span>Rendez-vous</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="Horaires.html">
+												<i class="fas fa-hourglass-start"></i>
+												<span>Calendrier des horaires</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% elseif 'ROLE_PARA' in app.user.roles %}
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="doctor-dashboard.html">
+												<i class="fas fa-columns"></i>
+												<span>Tableau de bord</span>
+											</a>
+										</li>
+
+
+										<li class="active">
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% endif %}
+					</div>
+					<!-- /Profile Sidebar -->
+
+				</div>
+			{% endblock %}
+			{% block basic %}
+				<div
+					class="col-md-7 col-lg-8 col-xl-9">
+
+					<!-- Basic Information -->
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">Basic Information</h4>
+							{% if 'ROLE_PATIENT' in app.user.roles %}
+								<div id="pat_appointments" class="tab-pane fade active show">
+									<div class="card card-table mb-0">
+										<div class="card-body">
+											<div class="table-responsive">
+												<table class="table table-hover table-center mb-0">
+													<thead>
+														<tr>
+															<th>Doctor</th>
+															<th>Appt Date</th>
+
+
+															<th>Status</th>
+
+														</tr>
+													</thead>
+													<tbody>
+														{% for RendezVous in RendezVouss %}
+															<tr>
+																{% if is_granted('ROLE_PATIENT') %}
+
+
+																	<td>
+																		<h2 class="table-avatar">
+
+																			<a href="doctor-profile.html">{{ RendezVous.docteur.nom}}
+
+																			</h2>
+																		</td>
+																		{%else%}
+																	</td>
+																	<td>
+																		<h2 class="table-avatar">
+
+																			<a href="doctor-profile.html">{{ RendezVous.patient.nom}}
+
+																			</h2>
+																		</td>
+																	{% endif %}
+																	<td>{{ RendezVous.date|date('Y-m-d H:i:s') }}</td>
+
+																	{% if RendezVous.statut=='Confirmé' %}
+																		<td>
+																			<span class="badge badge-pill bg-success-light">{{ RendezVous.statut}}</span>
+
+																		{% endif %}
+																		{% if RendezVous.statut=='Pending' %}
+																			<td>
+																				<span class="badge badge-pill bg-warning-light">{{ RendezVous.statut}}</span>
+
+																			{% endif %}
+																			{% if RendezVous.statut=='Annulé' %}
+																				<td>
+																					<span class="badge badge-pill bg-danger-light">{{ RendezVous.statut}}</span>
+
+																				{% endif %}
+																			</td>
+
+																		</tr>
+																	{% endfor %}
+																</tbody>
+															</tr>
+														</tbody>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /Appointment Tab -->
+
+
+							</div>
+						{% elseif 'ROLE_DOCTOR' in app.user.roles %}
+							<div id="pat_appointments" class="tab-pane fade active show">
+								<div class="card card-table mb-0">
+									<div class="card-body">
+										<div class="table-responsive">
+											<table class="table table-hover table-center mb-0">
+												<thead>
+													<tr>
+														<th>Doctor</th>
+														<th>Patient</th>
+														<th>Fiche</th>
+														<th>Appt Date</th>
+														<th>Status</th>
+
+														<th>Action</th>
+
+
+													</tr>
+												</thead>
+												<tbody>
+													{% for RendezVous in RendezVouss %}
+														<tr>
+															<td>
+																<h2 class="table-avatar">
+
+																	<a href="doctor-profile.html">{{ RendezVous.docteur.nom}}
+
+																	</h2>
+																</td>
+															</td>
+															<td>{{ RendezVous.patient.nom }}</td>
+															{% if RendezVous.fiche is null %}
+																<td>
+																	<a href="{{ path('app_add_Fiche', {'id': RendezVous.id}) }}">New</a>
+																</td>
+
+															{% else %}
+																<td>
+																	<a href="{{ path('app_docteur_Fiche', {'id': RendezVous.fiche.id}) }}">{{ RendezVous.fiche.id }}</a>
+																</td>
+															{% endif %}
+															<td>{{ RendezVous.date|date('Y-m-d H:i:s') }}</td>
+
+															{% if RendezVous.statut=='Pending' %}
+																<td>
+																	<span class="badge badge-pill bg-warning-light">{{ RendezVous.statut}}</span>
+
+
+																{% endif %}
+																{% if RendezVous.statut=='Confirmé' %}
+																	<td>
+																		<span class="badge badge-pill bg-success-light">{{ RendezVous.statut}}</span>
+
+
+																	{% endif %}
+																	{% if RendezVous.statut=='Annulé' %}
+																		<td>
+																			<span class="badge badge-pill bg-danger-light">{{ RendezVous.statut}}</span>
+
+
+																		{% endif %}
+																	</td>
+
+																	<td>
+																		<div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+																			<button type="button" class="btn btn-block btn-outline-danger active">
+																				<a class="apt-btn" href="{{ path('Annuler', {'id': RendezVous.id}) }}">Annuler</a>
+																			</button>
+																			<button type="button" class="btn btn-block btn-outline-info active">
+																				<a class="apt-btn" href="{{ path('Confirmer', {'id': RendezVous.id}) }}">Confirmer</a>
+																			</button>
+																		</div>
+																	</td>
+
+																</tr>
+															{% endfor %}
+														</tr>
+													</tbody>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endblock %}
+
+		</div>
+	</div>
+
+</div></div>{% endblock %}

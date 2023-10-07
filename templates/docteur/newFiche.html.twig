@@ -1,0 +1,204 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}NEW Fiche
+{% endblock %}
+
+{% block body %}
+
+	<div class="content">
+		<div class="container-fluid">
+
+			<div class="row">
+				{% block profile %}
+					<div
+						class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+						<!-- Profile Sidebar -->
+						<div class="profile-sidebar">
+							<div class="widget-profile pro-widget-content">
+								<div class="profile-info-widget">
+									<a href="#" class="booking-doc-img">
+										<img src="{{asset ('assets1/img/patients/patient.jpg')}} " alt="User Image">
+									</a>
+									<div class="profile-det-info">
+										<h3>{{app.user.email}}</h3>
+										<div class="patient-details">
+
+											<i class="fas fa-map-marker-alt"></i>
+											{{app.user.adresse}}</h5>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						{% if 'ROLE_PATIENT' in app.user.roles %}
+
+
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="doctor-dashboard.html">
+												<i class="fas fa-columns"></i>
+												<span>Tableau de bord</span>
+											</a>
+										</li>
+
+
+										<li class="active">
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% elseif 'ROLE_DOCTOR' in app.user.roles %}
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="doctor-dashboard.html">
+												<i class="fas fa-columns"></i>
+												<span>Tableau de bord</span>
+											</a>
+										</li>
+										<li class="active">
+											<a href="rendez-vous.html">
+												<i class="fas fa-calendar-check"></i>
+												<span>Rendez-vous</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="Horaires.html">
+												<i class="fas fa-hourglass-start"></i>
+												<span>Calendrier des horaires</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% elseif 'ROLE_PARA' in app.user.roles %}
+							<div class="dashboard-widget">
+								<nav class="dashboard-menu">
+									<ul>
+										<li>
+											<a href="doctor-dashboard.html">
+												<i class="fas fa-columns"></i>
+												<span>Tableau de bord</span>
+											</a>
+										</li>
+
+
+										<li class="active">
+											<a href="{{path ('user_profile')}}">
+												<i class="fas fa-user-cog"></i>
+												<span>Paramètres de profil</span>
+											</a>
+										</li>
+
+										<li>
+											<a href="doctor-change-password.html">
+												<i class="fas fa-lock"></i>
+												<span>Changer le mot de passe</span>
+											</a>
+										</li>
+										<li>
+											<a href="{{path ('app_logout')}}">
+												<i class="fas fa-sign-out-alt"></i>
+												<span>Se déconnecter</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						{% endif %}
+					</div>
+					<!-- /Profile Sidebar -->
+
+				</div>
+			{% endblock %}
+
+			<div
+				class="col-md-7 col-lg-8 col-xl-9">
+
+				<!-- Basic Information -->
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Basic Information</h4>
+						<div class="row form-row">
+							<div class="col-md-12">
+								<div class="form-group"></div>
+							</div>
+						</div>
+						{{ form_start(form,{'attr': {'novalidate':'novalidate'}}) }}
+						<Form>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>AGE :</label>
+									{{ form_widget(form.Age) }}
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Blood type</label>
+									{{ form_widget(form.BloodType) }}
+								</div>
+							</div>
+
+
+							<div class="submit-section">
+
+								<button class="btn btn-primary submit-btn">{{ button_label|default('Save') }}</button>
+
+							</div>
+
+
+						</Form>
+						{{form_end(form)}}
+
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+</div></div>{% endblock %}

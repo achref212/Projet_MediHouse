@@ -1,0 +1,68 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}
+	Reclamation
+{% endblock %}
+
+{% block body %}
+	<!-- Page Wrapper -->
+
+	<div class="breadcrumb-bar">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-md-12 col-12">
+					<nav aria-label="breadcrumb" class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{path ('app_patient_index')}}">Home</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">Réclamation</li>
+						</ol>
+					</nav>
+					<h2 class="breadcrumb-title">Réclamation</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Page Content -->
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							<p>
+								Une suggestion, un problème technique, une remarque
+								<br>
+								Contactez le support medihouse.tn
+								<br>
+								NB: Ce formulaire n'est pas consulté par les médecins, utilisez le uniquement pour contacter
+																							l'équipe support.
+							</p>
+							<p></p>
+							<div id="addFormDiv">
+								{{ include('reclamation/_form.html.twig')}}
+
+
+							</div>
+
+
+							<a href="{{ path('afficheRl') }}" class="btn btn-sm bg-primary-light">
+								<i class="fe fe-print"></i>
+								back to list
+							</a>
+
+							<!-- /Page Content -->
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div></div></div></div></div>{% endblock %}

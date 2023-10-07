@@ -1,0 +1,226 @@
+{% extends 'Admin.html.twig' %}
+
+{% block title %}Patient
+{% endblock %}
+
+{% block Sidebar %}
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li>
+						<a href="{{path ('app_Admin_index')}}">
+							<i class="fe fe-home"></i>
+							<span>Tableau de bord</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('app_listRDV')}}">
+							<i class="fe fe-layout"></i>
+							<span>Rendez-vous</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('user_doctors')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Doctors</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_patients')}}">
+							<i class="fe fe-user"></i>
+							<span>Patients</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_paras')}}">
+							<i class="fe fe-user"></i>
+							<span>parapharmacie
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('app_reponse_index')}}">
+							<i class="fe fe-star-o"></i>
+							<span>Forum</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('afficheR')}}">
+							<i class="fe fe-file"></i>
+							<span>Reclamation</span>
+						</a>
+					</li>
+
+					<li class="active">
+						<a href="{{path ('admin_profile')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Profile</span>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+
+{% endblock %}
+{% block pageheader %}
+	<div class="page-header">
+		<div class="row">
+			<div class="col-sm-12">
+
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="{{path ('app_Admin_index')}}">Tableau de bord</a>
+					</li>
+
+					<li class="breadcrumb-item active">
+						<a href="{{path ('admin_profile')}}">
+							profile</a>
+					</li>
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+{% block body %}
+	<div class="row">
+		<div class="col-md-12">
+			<div class="profile-header">
+				<div class="row align-items-center">
+					<div class="col-auto profile-image">
+						<a href="#">
+							<img class="rounded-circle" alt="User Image" src="{{ vich_uploader_asset(user, 'imgFile') }}">
+						</a>
+					</div>
+					<div class="col ml-md-n2 profile-user-info">
+						<h4 class="user-name mb-0">{{ user.nom }}
+							{{ user.prenom }}</h4>
+						<h6 class="text-muted">{{user.username}}</h6>
+						<div class="user-Location">
+							<i class="fa fa-map-marker"></i>
+							{{user.adresse}}
+						</div>
+						<div class="col-auto profile-btn">
+
+							<a href="{{path ('admin_profile_edit',{id :app.user.id})}} " class="btn btn-primary">
+								Edit
+							</a>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="profile-menu">
+				<ul class="nav nav-tabs nav-tabs-solid">
+					<li class="nav-item">
+						<a class="nav-link active" data-toggle="tab" href="#per_details_tab">À propos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#password_tab">Mot de passe</a>
+					</li>
+				</ul>
+			</div>
+			<div
+				class="tab-content profile-tab-cont">
+
+				<!-- Personal Details Tab -->
+				<div
+					class="tab-pane fade show active" id="per_details_tab">
+
+					<!-- Personal Details -->
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title d-flex justify-content-between">
+										<span>Personal Details</span>
+
+									</h5>
+									<div class="row">
+										<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Nom</p>
+										<p class="col-sm-10">{{user.nom}}</p>
+									</div>
+									<div class="row">
+										<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Prenom</p>
+										<p class="col-sm-10">{{user.prenom}}</p>
+									</div>
+									<div class="row">
+										<p class="col-sm-2 text-muted text-sm-right mb-0">genre</p>
+										<p class="col-sm-10">{{user.genre}}
+										</p>
+									</div>
+									<div class="row">
+										<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Email ID
+										</p>
+										<p class="col-sm-10">{{user.username}}</p>
+									</div>
+									<div class="row">
+										<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Mobile</p>
+										<p class="col-sm-10">{{user.telephone}}</p>
+									</div>
+									<div class="row">
+										<p class="col-sm-2 text-muted text-sm-right mb-0">Address</p>
+										<p class="col-sm-10 mb-0">{{user.adresse}}
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Edit Details Modal -->
+
+							<!-- /Edit Details Modal -->
+
+						</div>
+
+
+					</div>
+					<!-- /Personal Details -->
+
+				</div>
+				<!-- /Personal Details Tab -->
+
+				<!-- Change Password Tab -->
+				<div id="password_tab" class="tab-pane fade">
+
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Change Password</h5>
+							<div class="row">
+								<div class="col-md-10 col-lg-6">
+									<form>
+										<div class="form-group">
+											<label>Old Password</label>
+											<input type="password" class="form-control">
+										</div>
+										<div class="form-group">
+											<label>New Password</label>
+											<input type="password" class="form-control">
+										</div>
+										<div class="form-group">
+											<label>Confirm Password</label>
+											<input type="password" class="form-control">
+										</div>
+										<button class="btn btn-primary" type="submit">Save Changes</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Change Password Tab -->
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

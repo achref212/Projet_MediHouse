@@ -1,0 +1,52 @@
+{% extends 'pdfbase.html.twig' %}
+
+{% block body %}
+
+
+	<p class="card-text">ID:
+		{{Fiche.id}}</p>
+	<p class="card-text">Age:
+		{{Fiche.Age}}</p>
+	<p class="card-text">Groupe Sanguin:
+		{{Fiche.bloodType}}</p>
+
+
+	<table border="1" class="table table-hover table-center mb-0">
+		<thead>
+			<tr>
+
+				<th>Appt Date</th>
+				<th>Status</th>
+				<th>Local</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for RendezVous in Fiche.rendezVous %}
+				<tr>
+
+
+					<td>{{ RendezVous.date|date('Y-m-d H:i:s') }}</td>
+					{% if RendezVous.statut=='Pending' %}
+						<td>
+							<span class="badge badge-pill bg-warning-light">{{ RendezVous.statut}}</span>
+						{% endif %}
+						{% if RendezVous.statut=='Confirmé' %}
+							<td>
+								<span class="badge badge-pill bg-success-light">{{ RendezVous.statut}}</span>
+
+							{% endif %}
+							{% if RendezVous.statut=='Annulé' %}
+								<td>
+									<span class="badge badge-pill bg-danger-light">{{ RendezVous.statut}}</span>
+								{% endif %}
+							</td>
+							<td>{{ RendezVous.Local}}</td>
+						</tr>
+
+					{% endfor %}
+				</tr>
+			</tbody>
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Edit Question
+{% endblock %}
+
+{% block body %}
+	<div style="text-align: center;">
+		<h1>Edit Question</h1>
+
+		{{ include('question/_form.html.twig', {'button_label': 'mettre a jour'}) }}
+
+		<a href="{{ path('app_question_index') }}">
+			<button>back to list</button>
+		</a>
+
+	</div>
+{% endblock %}

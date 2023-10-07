@@ -1,0 +1,136 @@
+{% extends 'Admin.html.twig' %}
+
+{% block title %}Patient
+{% endblock %}
+
+{% block Sidebar %}
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li>
+						<a href="{{path ('app_Admin_index')}}">
+							<i class="fe fe-home"></i>
+							<span>Tableau de bord</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('app_listRDV')}}">
+							<i class="fe fe-layout"></i>
+							<span>Rendez-vous</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('user_doctors')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Doctors</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="{{path ('user_patients')}}">
+							<i class="fe fe-user"></i>
+							<span>Patients</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_paras')}}">
+							<i class="fe fe-user"></i>
+							<span>parapharmacie
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('app_reponse_index')}}">
+							<i class="fe fe-star-o"></i>
+							<span>Forum</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('afficheR')}}">
+							<i class="fe fe-file"></i>
+							<span>Reclamation</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('admin_profile')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Profile</span>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+
+{% endblock %}
+
+{% block pageheader %}
+	<div class="page-header">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="page-title">Liste des patients</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index.html">Tableau de bord</a>
+					</li>
+
+					<li class="breadcrumb-item active">Patient</li>
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block body %}
+	<h1>Patient
+	</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+
+				<th>profilepicture</th>
+				<th>Email</th>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Genre</th>
+				<th>Telephone</th>
+				<th>adresse</th>
+				<th>activete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if patients is not empty %}
+
+				{% for patient in patients %}
+					<tr>
+						<td>{{ patient.profilepicture }}</td>
+						<td>{{ patient.email }}</td>
+						<td>{{ patient.nom }}</td>
+						<td>{{ patient.prenom }}</td>
+						<td>{{ patient.genre }}</td>
+						<td>{{ patient.telephone }}</td>
+						<td>{{ patient.adresse }}</td>
+						<td>{{ patient.activate }}</td>
+
+
+					</tr>
+				{% endfor %}
+			{% else %}
+				<p>Aucun utilisateur trouvé.</p>
+			{% endif %}
+		</tbody>
+	</table>
+
+
+{% endblock %}

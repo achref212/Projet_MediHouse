@@ -1,0 +1,47 @@
+{{ form_start(form,{'attr': {'novalidate':'novalidate'}}) }}
+<Form>
+	<div class="col-md-6">
+		<div class="form-group">
+
+			{{ form_row(form.nomproduit, {'attr': {'class': 'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+
+			{{ form_row(form.prix, {'attr': {'class': 'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+
+			{{ form_row(form.quantityproduit, {'attr': {'class': 'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+
+			{{ form_row(form.color, {'attr': {'class': 'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+
+			{{ form_row(form.dispoproduit, {'attr': {'class': 'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+
+			{{ form_row(form.imgFile, {'attr': {'class': 'form-control'}}) }}
+		</div>
+	</div>
+
+
+	<div class="submit-section">
+		{{ form_row(form.Add, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+
+</Form>
+{{form_end(form)}}

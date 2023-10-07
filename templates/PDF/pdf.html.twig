@@ -1,0 +1,171 @@
+{% extends 'pdfbase.html.twig' %}
+
+{% block body %}
+	<style>
+		h3 {
+			text-align: right;
+		}
+	</style>
+	<style type="text/css">
+
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		.ft10 {
+			font-size: 102px;
+			font-family: Times;
+			color: #085353;
+		}
+		.ft11 {
+			font-size: 17px;
+			font-family: Times;
+			color: #00B0FF;
+		}
+		.ft12 {
+			font-size: 20px;
+			font-family: Times;
+			color: #00B0FF;
+		}
+		.ft13 {
+			font-size: 30px;
+			font-family: Times;
+			color: #0097FF;
+		}
+		.ft14 {
+			font-size: 20px;
+			font-family: Times;
+			color: #003F6A;
+		}
+		.ft15 {
+			font-size: 30px;
+			font-family: Times;
+			color: #00FDFF;
+		}
+		.ft16 {
+			font-size: 102px;
+			line-height: 146px;
+			font-family: Times;
+			color: #085353;
+		}
+	</style>
+	<style>
+		.centered {
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.num {
+			position: absolute;
+			bottom: 810px;
+			left: 510px;
+		}
+		.sujet {
+			position: absolute;
+			bottom: 645px;
+			left: 215px;
+		}
+		.sujetS {
+			position: absolute;
+			bottom: 645px;
+			left: 310px;
+		}
+		.Description {
+			position: absolute;
+			bottom: 575px;
+			left: 215px;
+		}
+		.DescriptionS {
+			position: absolute;
+			bottom: 555px;
+			left: 215px;
+		}
+		.reponse {
+			position: absolute;
+			bottom: 500px;
+			left: 215px;
+		}
+		.reponseS {
+			position: absolute;
+			bottom: 480px;
+			left: 215px;
+		}
+		.contact {
+			position: absolute;
+			bottom: 355px;
+			left: 26%;
+		}
+		.contactt {
+			position: absolute;
+			bottom: 333px;
+			left: 50%;
+		}
+	</style>
+	<div class="container">
+		<img src="https://scontent.ftun8-1.fna.fbcdn.net/v/t39.30808-6/333033431_612553157356889_925087746051347753_n.jpg?stp=dst-jpg_p843x403&_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=9XWbNWnwG2EAX9a317k&_nc_ht=scontent.ftun8-1.fna&oh=00_AfBQwQVstnlcQHGz6OSQmRbP6DFSecTwjPQWOtv-NXZ_kg&oe=640CF8A1" width="700" height="877">
+
+		<div class="ft14">
+			<h1 class="centered">
+				<strong>
+					<center>réclamation traité</center>
+				</strong>
+			</h1>
+		</div>
+		<div class="ft12">
+			<h3 class="num">
+				<strong>N°</strong>
+				{{ reclamation.id }}</h3>
+		</div>
+		<div class="ft15">
+			<div class="sujet">
+				<strong>Sujet :
+				</strong>
+			</div>
+		</div>
+		<div class="ft12">
+			<div class="sujetS">{{ reclamation.sujet }}</div>
+		</div>
+		<div class="ft15">
+			<div class="Description">
+				<strong>Description :
+				</strong>
+			</div>
+		</div>
+		<div class="ft11">
+			<div class="DescriptionS">{{ reclamation.descreption }}</div>
+		</div>
+		<div class="ft15">
+			<div class="reponse">
+				<strong>Reponse :
+				</strong>
+			</div>
+		</div>
+		<div class="ft11">
+			<div class="reponseS">{{Reponse1.reponse1Des}}</div>
+		</div>
+		<table>
+			<tr>
+				<td>
+					<div class="contact">
+						<div class="ft11">
+							<strong>Contact Us</strong>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="contactt">
+						<div class="ft11">Esprit, Ghazala, Tunisie.</div>
+						<div class="ft11">+216 55 676 837
+						</div>
+						<div class="ft11">contact@medihouse.com
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+
+{% endblock %}

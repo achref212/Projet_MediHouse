@@ -1,0 +1,52 @@
+{% extends 'Admin.html.twig' %}
+
+
+{% block body %}
+	{{ form_start(formClass,{'attr': {'novalidate':'novalidate'}}) }}
+	{{ form_errors(formClass) }}
+	<div class="page-wrapper">
+		<div
+			class="content container-fluid">
+
+			<!-- Page Header -->
+			<div class="page-header">
+				<div class="row">
+					<div class="col-sm-12">
+						<h3 class="page-title">Reponse</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="index.html">Dashboard</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="/afficheREC">Liste des Réclamation</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="/afficheREC">View</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="">Reponse</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- /Page Header -->
+			<!-- Edit Details Modal -->
+
+
+			<label class="focus-label">Votre reponse</label><br>
+
+			{{ form_widget(formClass.Reponse1Des) }}
+			{{ form_errors(formClass.Reponse1Des) }}
+
+			<!-- /Edit Details Modal -->
+			<div class="submit-section proceed-btn " data-toggle="modal">
+				<button class="btn btn-primary submit-btn">
+					{{ button_label|default('Ajouter', {'id': Reponse1.id}) }}</button>
+			</div>
+		</div>
+	</div>
+	{{ form_end(formClass) }}
+{% endblock %}

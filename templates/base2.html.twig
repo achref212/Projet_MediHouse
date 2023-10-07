@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html
+	lang="en">
+
+	<!-- doccure/reviews.html  30 Nov 2019 04:12:15 GMT -->
+	<style>
+		.centerni {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 200px;
+			border: 3px solid green;
+		}
+		.button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 16px 30.5px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 0.5px;
+			transition-duration: 0.4s;
+			cursor: pointer;
+		}
+
+		.button1 {
+			background-color: white;
+			color: black;
+			width: 25%;
+			border: 0.5px solid #4CAF50;
+		}
+		.button-group {
+			display: inline-block;
+		}
+
+		.button1:hover {
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
+	<head>
+		<meta charset="utf-8">
+		<title>MEDIHOUSE</title>
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+		<!-- Favicons -->
+		<link
+		href="{{ asset ('assets1/img/favicon1.png') }}" rel="icon">
+
+		<!-- Bootstrap CSS -->
+		<link
+		rel="stylesheet" href="{{asset ('assets1/css/bootstrap.min.css') }}">
+
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{{asset ('assets1/plugins/fontawesome/css/fontawesome.min.css') }}">
+		<link
+		rel="stylesheet" href="{{asset ('assets1/plugins/fontawesome/css/all.min.css') }}">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{{asset ('assets1/css/style.css') }}">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+																	<script src="{{asset ('assets1/js/html5shiv.min.js') }}"></script>
+																	<script src="{{asset ('assets1/js/respond.min.js') }}"></script>
+																<![endif]-->
+
+	</head>
+
+	<body
+		style="transform: none;">
+
+		<!-- Main Wrapper -->
+		<div
+			class="main-wrapper" style="transform: none;">
+
+			<!-- Header -->
+			<header class="header">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="{{path ('app_patient_index')}}" class="navbar-brand logo">
+							<img src="{{asset ('assets1/img/logo2.png') }}" class="img-fluid" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="{{path ('app_patient_index')}}" class="menu-logo">
+								<img src="{{asset ('assets1/img/logo2.png') }}" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="has-submenu">
+								<a href="{{path ('app_patient_index')}}">Accueil</a>
+							</li>
+							<li class="has-submenu">
+								<a href="{{ path('app_patient') }}">Rechercher un médecin</a>
+							</li>
+							<li class="has-submenu">
+								<a href="para.html">Parapharmacie</a>
+							</li>
+							<li class="has-submenu">
+								<a href="{{ path('app_addReclamation') }}">Reclamation</a>
+							</li>
+							<li class="has-submenu">
+								<a href="{{path ('app_question_index')}}">Forum</a>
+							</li>
+							<li class="has-submenu">
+								<a href="{{path ('user_profile')}}">profile</a>
+							</li>
+
+							<!--<li class="has-submenu">
+																																																									<a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
+																																																									<ul class="submenu">
+																																																										<li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+																																																										<li><a href="appointments.html">Appointments</a></li>
+																																																										<li><a href="schedule-timings.html">Schedule Timing</a></li>
+																																																										<li><a href="my-patients.html">Patients List</a></li>
+																																																										<li><a href="patient-profile.html">Patients Profile</a></li>
+																																																										<li><a href="chat-doctor.html">Chat</a></li>
+																																																										<li><a href="invoices.html">Invoices</a></li>
+																																																										<li><a href="doctor-profile-settings.html">Profile Settings</a></li>
+																																																										<li><a href="reviews.html">Reviews</a></li>
+																																																										<li><a href="doctor-register.html">Doctor Register</a></li>
+																																																									</ul>
+																																																								</li>-->
+							<!--<li class="has-submenu">
+																																																									<a href="#">Patients <i class="fas fa-chevron-down"></i></a>
+																																																									<ul class="submenu">
+																																																										<li><a href="search.html">Search Doctor</a></li>
+																																																										<li><a href="doctor-profile.html">Doctor Profile</a></li>
+																																																										<li><a href="booking.html">Booking</a></li>
+																																																										<li><a href="checkout.html">Checkout</a></li>
+																																																										<li><a href="booking-success.html">Booking Success</a></li>
+																																																										<li><a href="patient-dashboard.html">profile</a></li>
+																																																										<li><a href="favourites.html">Favourites</a></li>
+																																																										<li><a href="chat.html">Chat</a></li>
+																																																										<li><a href="profile-settings.html">Profile Settings</a></li>
+																																																										<li><a href="change-password.html">Change Password</a></li>
+																																																									</ul>
+																																																								</li>
+																																																								<li class="has-submenu">
+																																																									<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
+																																																									<ul class="submenu">
+																																																										<li><a href="voice-call.html">Voice Call</a></li>
+																																																										<li><a href="video-call.html">Video Call</a></li>
+																																																										<li><a href="search.html">Search Doctors</a></li>
+																																																										<li><a href="calendar.html">Calendar</a></li>
+																																																										<li><a href="components.html">Components</a></li>
+																																																										<li class="has-submenu">
+																																																											<a href="invoices.html">Invoices</a>
+																																																											<ul class="submenu">
+																																																												<li><a href="invoices.html">Invoices</a></li>
+																																																												<li><a href="invoice-view.html">Invoice View</a></li>
+																																																											</ul>
+																																																										</li>
+																																																										<li><a href="blank-page.html">Starter Page</a></li>
+																																																										<li><a href="login.html">Login</a></li>
+																																																										<li><a href="register.html">Register</a></li>
+																																																										<li><a href="forgot-password.html">Forgot Password</a></li>
+																																																									</ul>
+																																																								</li>
+																																																								<li>
+																																																									<a href="admin/index.html" target="_blank">Admin</a>
+																																																								</li>
+																																																								<li class="login-link">
+																																																									<a href="login.html">Login / Signup</a>
+																																																								</li>-->
+							<li class="login-link">
+								<a href="login.html">Se déconnecter</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="nav header-navbar-rht">
+						<li class="nav-item contact-item">
+							<div class="header-contact-img">
+								<i class="far fa-hospital"></i>
+							</div>
+							<div class="header-contact-detail">
+								<p class="contact-header">Contact</p>
+								<p class="contact-info-header">
+									+216 55 676 837</p>
+							</div>
+						</li>
+
+						<!-- User Menu -->
+						<li class="nav-item dropdown has-arrow logged-item">
+							<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+								<span class="user-img">
+									<img class="rounded-circle" src="{{asset ('assets1/img/patients/patient.jpg') }}" width="31" alt="Ryan Taylor">
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<div class="user-header">
+									<div class="avatar avatar-sm">
+										<img src="{{asset ('assets1/img/patients/patient.jpg') }}" alt="User Image" class="avatar-img rounded-circle">
+									</div>
+									<div class="user-text">
+										<h6>{{app.getuser.username() }}</h6>
+										<p class="text-muted mb-0">Patient</p>
+									</div>
+								</div>
+								<a class="dropdown-item" href="patient-dashboard.html">Dashboard</a>
+								<a class="dropdown-item" href="profile-settings.html">Profile Settings</a>
+								<a class="dropdown-item" href="login.html">Se déconnecter</a>
+							</div>
+						</li>
+						<!-- /User Menu -->
+
+					</ul>
+				</nav>
+			</header>
+			<!-- /Header -->
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item">
+										<a href="index-2.html">Accueil</a>
+									</li>
+									<li class="breadcrumb-item active" aria-current="page">Forum</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Forum</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			{%block body%}
+			<!-- Page Content -->
+			<u1 style="text-align: center;">
+				<a href="{{ path('app_question_new') }}">
+					<button class="button button1">posez une question</button>
+				</a>
+
+			</u1>
+		</div>
+
+		<div class="content" style="transform: none; min-height: 413.29px;">
+			<div class="container-fluid" style="transform: none;">
+
+				<div class="row" style="transform: none;">
+
+					<div class="col-md-7 col-lg-8 col-xl-10">
+						{% for question in questions %}
+							<div
+								class="doc-review review-listing">
+
+								<!-- Review Listing -->
+								<ul
+									class="comments-list">
+
+									<!-- Comment List -->
+									<li>
+										<a href="{{ path('app_question_edit', {'id': question.id}) }}" style="float: right;">
+											<button>edit</button>
+										</a>
+										<form method="post" action="{{ path('delete', {'id': question.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+											<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ question.id) }}">
+											<button style="float: right;">Delete</button>
+										</form>
+										<div class="comment">
+											<img class="avatar rounded-circle" alt="User Image" src="{{asset('assets1/img/patients/patient.jpg')}}">
+											<div class="comment-body">
+												<div class="meta-data">
+													{% if question.gethidename()==1 %}
+														<p>Anonymous</p>
+													{% else %}
+														<p>
+															<span class="comment-author">{{ question.getiduser() }}</span>
+														</p>
+													{% endif %}
+
+													<span class="comment-date">publié le
+														{{ question.getdatepub()|date('d M Y') }}</span>
+												</div>
+												<p class="comment-content">{{ question.question }}</p>
+												<div class="comment-response">
+													<a class="comment-btn" href="{{ path('app_reponse_new', {'question_id': question.id}) }}">
+														<i class="fas fa-response"></i>
+														<button>repondre</button>
+
+
+													</a>
+													<p class="recommend-btn" style="display:inline-block; margin-left:50em;">
+														<span>a recommander?</span>
+														<a href="#" class="like-btn">
+															<i class="far fa-thumbs-up"></i>
+															Oui
+														</a>
+														<a href="#" class="dislike-btn">
+															<i class="far fa-thumbs-down"></i>
+															Non
+														</a>
+													</p>
+												</div>
+												<!-- Replies -->
+												<!--	{% for response in reponses %}
+																																																																																											<div class="comment-response">
+																																																																																												<p class="comment-author">{{ response.getiduser() }}</p>
+																																																																																												<p class="comment-date">publié le {{ response.getdatepub()|date('d M Y') }}</p>
+																																																																																												<p class="comment-content">{{ response.getreponse() }}</p>
+																																																																																											</div>
+																																																																																										{% endfor %}-->
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						{% endfor %}
+
+
+						<!-- /Comment List -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html></div><!-- /Page Content -->{%endblock%}<script>
+$('.comment-like-btn').click(function () {
+var questionId = $(this).closest('.comment').data('question-id');
+$.ajax({
+type: 'POST',
+url: '/question/' + questionId + '/like',
+success: function (response) {
+$('.comment[data-question-id="' + questionId + '"] .comment-like-count').text(response.likes);
+}
+});
+});
+
+$('.comment-dislike-btn').click(function () {
+var questionId = $(this).closest('.comment').data('question-id');
+$.ajax({
+type: 'POST',
+url: '/question/' + questionId + '/dislike',
+success: function (response) {
+$('.comment[data-question-id="' + questionId + '"] .comment-dislike-count').text(response.dislikes);
+}
+});
+});</script><!-- Footer --><footer
+class="footer">
+
+<!-- Footer Top -->
+<div class="footer-top">
+	<div class="container-fluid">
+		<div class="row">
+			<div
+				class="col-lg-3 col-md-6">
+
+				<!-- Footer Widget -->
+				<div class="footer-widget footer-about">
+					<div class="footer-logo">
+						<img src="{{asset ('assets1/img/footer-logo1.png') }}" alt="logo">
+					</div>
+					<div class="footer-about-content">
+						<div class="social-icon">
+							<ul>
+								<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+								<li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+								<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+								<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /Footer Widget -->
+
+			</div>
+
+			<div class="col-lg-3 col-md-6"><!-- Footer Widget -->
+				<!--<div class="footer-widget footer-menu">
+																																				<h2 class="footer-title">For Patients</h2>
+																																				<ul>
+																																					<li><a href="search.html"><i class="fas fa-angle-double-right"></i> Search for
+																																							Doctors</a></li>
+																																					<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+																																					<li><a href="register.html"><i class="fas fa-angle-double-right"></i> Register</a>
+																																					</li>
+																																					<li><a href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a>
+																																					</li>
+																																					<li><a href="patient-dashboard.html"><i class="fas fa-angle-double-right"></i>
+																																							Patient Dashboard</a></li>
+																																				</ul>
+																																			</div>
+																																			<!-- /Footer Widget -->
+
+			</div>
+
+			<div class="col-lg-3 col-md-6"><!-- Footer Widget -->
+				<!--<div class="footer-widget footer-menu">
+																																				<h2 class="footer-title">For Doctors</h2>
+																																				<ul>
+																																					<li><a href="appointments.html"><i class="fas fa-angle-double-right"></i>
+																																							Appointments</a></li>
+																																					<li><a href="chat.html"><i class="fas fa-angle-double-right"></i> Chat</a></li>
+																																					<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+																																					<li><a href="doctor-register.html"><i class="fas fa-angle-double-right"></i>
+																																							Register</a></li>
+																																					<li><a href="doctor-dashboard.html"><i class="fas fa-angle-double-right"></i> Doctor
+																																							Dashboard</a></li>
+																																				</ul>
+																																			</div>
+																																			<!-- /Footer Widget -->
+
+			</div>
+
+			<div
+				class="col-lg-3 col-md-6">
+
+				<!-- Footer Widget -->
+				<div class="footer-widget footer-contact">
+					<h2 class="footer-title">Contact Us</h2>
+					<div class="footer-contact-info">
+						<div class="footer-address">
+							<span>
+								<i class="fas fa-map-marker-alt"></i>
+							</span>
+							<p>
+								esprit ghazala tunisie</p>
+						</div>
+						<p>
+							<i class="fas fa-phone-alt"></i>
+							+216 55 676 837
+						</p>
+						<p class="mb-0">
+							<i class="fas fa-envelope"></i>
+							contact@medihouse.com
+						</p>
+					</div>
+				</div>
+				<!-- /Footer Widget -->
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- /Footer Top --><!-- Footer Bottom -->
+
+<!-- /Footer Bottom --></footer><!-- /Footer --></div><!-- /Main Wrapper --><!-- jQuery --><script src="{{asset ('assets1/js/jquery.min.js') }}"></script><!-- Bootstrap Core JS --><script src="{{asset ('assets1/js/popper.min.js') }}"></script><script src="{{asset ('assets1/js/bootstrap.min.js') }}"></script><!-- Sticky Sidebar JS --><script src="{{asset ('assets1/plugins/theia-sticky-sidebar/ResizeSensor.js') }}"></script><script src="{{asset ('assets1/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}"></script><!-- Custom JS --><script src="{{asset ('assets1/js/script.js') }}"></script><div class="sidebar-overlay"></div><div class="sidebar-overlay"></div></body><!-- doccure/reviews.html  30 Nov 2019 04:12:15 GMT --></html>

@@ -1,0 +1,174 @@
+{% extends 'Admin.html.twig' %}
+
+{% block title %}Question
+{% endblock %}
+
+{% block Sidebar %}
+	<!-- Sidebar -->
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span>Main</span>
+					</li>
+					<li>
+						<a href="{{path ('app_Admin_index')}}">
+							<i class="fe fe-home"></i>
+							<span>Tableau de bord</span>
+						</a>
+					</li>
+					<li>
+						<a href="rendez-vous.html">
+							<i class="fe fe-layout"></i>
+							<span>Rendez-vous</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('user_doctors')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Doctors</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_patients')}}">
+							<i class="fe fe-user"></i>
+							<span>Patients</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{path ('user_paras')}}">
+							<i class="fe fe-user"></i>
+							<span>parapharmacie
+							</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="Forum.html">
+							<i class="fe fe-star-o"></i>
+							<span>Forum</span>
+						</a>
+					</li>
+					<li>
+						<a href="reclamation.html">
+							<i class="fe fe-file"></i>
+							<span>Reclamation</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{path ('admin_profile')}}">
+							<i class="fe fe-user-plus"></i>
+							<span>Profile</span>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /Sidebar -->
+{% endblock %}
+{% block pageheader %}
+	<div class="page-header">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="page-title">Liste des Question</h3>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="index.html">Tableau de bord</a>
+					</li>
+
+					<li class="breadcrumb-item active">Question</li>
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+{% block body %}
+	<h1>Repense
+	</h1>
+
+	<table class="table">
+
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ question.id }}</td>
+			</tr>
+
+			<tr>
+				<th>Question</th>
+				<td>{{ question.question }}</td>
+			</tr>
+			<tr>
+				<th>Date_pub</th>
+				<td>{{ question.datePub ? question.datePub|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>likes</th>
+				{% if question.likes == NULL %}
+
+					<td>0</td>
+				{% else %}
+					<td>{{ question.likes}}
+						<i style="color:#20d420" class="fa fa-thumbs-up"></i>
+					</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<th>dislike</th>
+				{% if question.Dislikes == NULL %}
+
+					<td>0</td>
+				{% else %}
+					<td>{{ question.dislikes}}
+						<i style="color:red" class="fa fa-thumbs-down"></i>
+					</td>
+				{% endif %}
+
+			</tr>
+			<tr>
+				<th>Question</th>
+
+				<table class="table">
+
+					<tbody>
+						{% for reponse in reponses %}
+							{% if reponse.getidquestion() == question.getid() %}
+
+								<tr>
+									<td>{{ reponse.id }}</td>
+									<td>{{reponse.getuser.username()}}
+									<td>{{ reponse.reponse }}</td>
+									<td>{{ reponse.datePub ? reponse.datePub|date('Y-m-d') : '' }}</td>
+									<td>
+										<u1 style="text-align: center;">
+											<div class="button-group">
+											
+												<form method="post" action="{{ path('app_reponse_delete1', {'id': reponse.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+													<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reponse.id) }}">
+													<button class="btn btn-danger delete">Supprimer</button>
+												</form>
+											</span>
+										</u1>
+									</td>
+								</tr>
+							{% endif %}
+
+						{% else %}
+							<tr>
+								<td colspan="5">pas de question</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</tr>
+
+
+		</tbody>
+	</table>
+{% endblock %}

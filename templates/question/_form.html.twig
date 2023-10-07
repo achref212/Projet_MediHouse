@@ -1,0 +1,47 @@
+<div class="doc-review review-listing custom-edit-service" bis_skin_checked="1">
+
+
+	<div class="card" bis_skin_checked="1">
+		<div class="card-body" bis_skin_checked="1">
+
+			<form method="post" action="#">
+
+				<div class="service-fields mb-3" bis_skin_checked="1">
+					<div class="row" bis_skin_checked="1">
+						<div class="col-lg-6" bis_skin_checked="1">
+							<div class="form-group" bis_skin_checked="1">
+								{{ form_start(form,{attr:{novalidate:'novalidate'} }) }}
+								{{ form_row(form.categorie, {'attr': {'class':'form-control'} }) }}
+							</div>
+							<div class="col-lg-6" bis_skin_checked="1">
+								<div class="form-group" bis_skin_checked="1">
+									{{ form_row(form.hide_name, {'attr': {'class':'form-control'} }) }}
+								</div>
+							</div>
+
+							<div class="service-fields mb-3" bis_skin_checked="1">
+								<div class="row" bis_skin_checked="1">
+									<div class="col-lg-12" bis_skin_checked="1">
+										<div class="form-group" bis_skin_checked="1">
+											{{ form_row(form.question, {'attr': {'class':'form-control'} }) }}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="service-fields mb-3" bis_skin_checked="1">
+								<div class="row" bis_skin_checked="1">
+									<div class="col-lg-12" bis_skin_checked="1">
+										{{ form_row(form.image, {'attr': {'class':'form-control'} }) }}
+									</div>
+								</div>
+							</div>
+
+							<div class="submit-section" bis_skin_checked="1">
+								{{ form_row(form.Confirmer, {'attr': {'class':'form-control'} }) }}
+								{{ form_end(form) }}
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>

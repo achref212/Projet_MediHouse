@@ -1,0 +1,49 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Edit Reclamation
+{% endblock %}
+
+{% block body %}
+	<!-- Page Wrapper -->
+
+
+	<!-- Page Header -->
+		<div class="breadcrumb-bar"> <div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-md-12 col-12">
+					<nav aria-label="breadcrumb" class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="index-2.html">Home</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="{{ path('app_addReclamation') }}">Réclamation</a>
+							</li>
+							<li class="breadcrumb-item active" aria-current="page">Edit Réclamation</li>
+						</ol>
+					</nav>
+					<h2 class="breadcrumb-title">Edit Réclamation</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Page Header -->
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-body">
+							<h1>Edit Reclamation</h1>
+
+							{{ include('reclamation/_form.html.twig', {'button_label': 'Update'}) }}
+
+							<a href="{{ path('afficheRl') }}">back to list</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

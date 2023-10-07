@@ -1,0 +1,151 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+
+
+		<div
+			class="col-md-12 col-lg-6">
+
+			<!-- Invoice Chart -->
+			<div class="card card-chart">
+				<div class="card-header">
+					<h4 class="card-title">Nbre Users/Role</h4>
+				</div>
+				<div class="card-body">
+					<canvas id="Roles" width="400" height="100"></canvas>
+				</div>
+			</div>
+			<!-- /Invoice Chart -->
+
+		</div>
+		<div
+			class="col-md-12 col-lg-6">
+
+			<!-- Invoice Chart -->
+			<div class="card card-chart">
+				<div class="card-header">
+					<h4 class="card-title">Nbr de réclamation / Sujet</h4>
+				</div>
+				<div class="card-body">
+					<canvas id="Sujet" width="400" height="100"></canvas>
+				</div>
+			</div>
+			<!-- /Invoice Chart -->
+
+		</div>
+	</div>
+	<div class="row">
+		<div
+			class="col-md-12 col-lg-6">
+
+			<!-- Invoice Chart -->
+			<div class="card card-chart">
+				<div class="card-header">
+					<h4 class="card-title">Nbre de Rendez Vous / Date</h4>
+				</div>
+				<div class="card-body">
+					<canvas id="rendezvous" width: 50%; margin: auto; height="100"></canvas>
+				</div>
+			</div>
+			<!-- /Invoice Chart -->
+
+		</div>
+		<div
+			class="col-md-12 col-lg-6">
+
+			<!-- Invoice Chart -->
+			<div class="card card-chart">
+				<div class="card-header">
+					<h4 class="card-title">Nbre de Reponse/Question</h4>
+				</div>
+				<div class="card-body">
+					<canvas id="chart" width: 50%; margin: auto; height="100"></canvas>
+				</div>
+			</div>
+			<!-- /Invoice Chart -->
+
+		</div>
+
+
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+	<script>
+
+		let Sujet = document.querySelector("#Sujet")
+let SujetGraph = new Chart(Sujet, {
+type: "doughnut",
+data: {
+labels: [
+"Médecins", "Patients", "Autres"
+],
+datasets: [
+{
+label: "Répartition des Sujets",
+data: {{ SujetCount|raw }},
+backgroundColor: ["red", "green", "pink"]
+}
+]
+}
+})
+
+let Roles = document.querySelector("#Roles")
+let categGraph = new Chart(Roles, {
+type: "doughnut",
+data: {
+labels: [
+"Docteur", "Patient", "Admin", "Para"
+],
+datasets: [
+{
+label: "Répartition des catégories",
+data: {{ RoleCount|raw }},
+backgroundColor: ["red", "green", "blue", "orange"]
+}
+]
+}
+})
+
+let rendezvous = document.querySelector("#rendezvous")
+let annGraph = new Chart(rendezvous, {
+type: "line",
+data: {
+labels: {{ dates|raw }},
+datasets: [
+{
+label: "Nombre de rendezvous",
+data: {{ RendezVousCount|raw }},
+fill: false,
+borderColor: 'rgb(75, 192, 192)',
+tension: 0.1
+}
+]
+},
+options: {
+
+scales: {
+yAxes: [
+{
+ticks: {
+beginAtZero: true
+}
+}
+]
+}
+}
+
+})
+var chartData = {{ chartData|raw }};
+
+var ctx = document.getElementById('chart').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: chartData
+});
+	</script>
+{% endblock %}
